@@ -6,29 +6,17 @@ using UnityEngine.UI;
 
 public class TimerManager : MonoBehaviour
 {
-    public GameObject textTimeGo;
-    public GameObject textTimeMiniGo;
-
-    public float timer = 30;
-    public float score = 0;
+    public GameObject gameDirectorGo;
+    public GameDirector gameDirector;
+    public float remainTime = 30;
 
     void Start()
     {
-        
+        gameDirector = gameDirectorGo.GetComponent<GameDirector>();
     }
     void Update()
     {
-        textTimeGo.GetComponent<Text>().text = $"{timer:0}";
-        textTimeMiniGo.GetComponent<Text>().text = $".{(timer % 1) * 100:0}";
-        timer -= Time.deltaTime;
-        score += Time.deltaTime / 0.001f * 0.01f;
-
-        if (timer <= 0)
-        {
-            timer = 0;
-            score = 300;
-            textTimeGo.GetComponent<Text>().text = $"{timer:0}";
-            textTimeMiniGo.GetComponent<Text>().text = $".{(timer % 1) * 100:0}";
-        }
+        remainTime -= Time.deltaTime;
+        gameDirector.remainTime = remainTime;
     }
 }

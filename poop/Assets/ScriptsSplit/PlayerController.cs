@@ -7,8 +7,7 @@ public class PlayerController : MonoBehaviour
     private float maxHp = 100;
     public float hp = 100;
     public float radius = 1f;
-    public bool isLeftKeyDown;
-    public bool isRightKeyDown;
+    public float moveAmount;
 
     // Start is called before the first frame update
     void Start()
@@ -19,16 +18,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (this.isLeftKeyDown)
-        {
-            this.transform.Translate(-1, 0, 0);
-            LimitPosition();
-        }
-        else if (this.isRightKeyDown)
-        {
-            this.transform.Translate(1, 0, 0);
-            LimitPosition();
-        }
+        this.Move();
+        this.LimitPosition();
     }
     private void LimitPosition()
     {
@@ -36,5 +27,10 @@ public class PlayerController : MonoBehaviour
         {
             this.transform.position = new Vector3(Mathf.Clamp(this.transform.position.x, -7.78f, 7.78f), this.transform.position.y, this.transform.position.z);
         }
+    }
+    private void Move()
+    {
+        this.transform.Translate(moveAmount, 0, 0);
+        moveAmount = 0;
     }
 }

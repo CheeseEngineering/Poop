@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
-    public GameObject player;
-    private PlayerController playerController;
+    public GameObject gameDirectorGo;
+    public GameDirector gameDirector;
     void Start()
     {
-        player = GameObject.Find("player");
-        playerController = player.GetComponent<PlayerController>();
+        gameDirector = gameDirectorGo.GetComponent<GameDirector>();
     }
     void Update()
     {
-        playerController.isLeftKeyDown = Input.GetKeyDown(KeyCode.LeftArrow);
-        playerController.isRightKeyDown = Input.GetKeyDown(KeyCode.RightArrow);
+        gameDirector.isLeftKeyDown= Input.GetKeyDown(KeyCode.LeftArrow);
+        gameDirector.isRightKeyDown = Input.GetKeyDown(KeyCode.RightArrow);
     }
 }
