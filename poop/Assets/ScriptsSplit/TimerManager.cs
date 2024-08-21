@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.TextCore.Text;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
@@ -22,20 +23,20 @@ public class TimerManager : MonoBehaviour
         RemainTimeCheck();
 
         ShootingDelayCheck();
-        
+
+        IsPlayerDied();
     }
 
     private void RemainTimeCheck()
     {
         this.remainTime -= Time.deltaTime;
-        gameDirector.remainTime = remainTime;
+        gameDirector.remainTime = this.remainTime;
     }
 
     private void ShootingDelayCheck()
     {
         if (isHardModUnlocked==true)
         {
-            Debug.Log("속사 하드모드 언락");
             this.shootingDelay += Time.deltaTime*2;
             if (this.shootingDelay > 1f)
             {
@@ -51,6 +52,13 @@ public class TimerManager : MonoBehaviour
                 gameDirector.isReloadCompleted = true;
                 this.shootingDelay = 0;
             }
+        }
+    }
+    private void IsPlayerDied()
+    {
+        if (gameDirector.isDied || gameDirector.isGameOver)
+        {
+            this.enabled = false;
         }
     }
 }

@@ -18,7 +18,20 @@ public class ScoreManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       score += Time.deltaTime / 0.001f * 0.01f;
-       gameDirector.score = score;
+        this.ScoreCheck();
+        
+        this.IsPlayerDied();
+    }
+    private void ScoreCheck()
+    {
+        this.score += Time.deltaTime / 0.001f * 0.01f;
+        gameDirector.score = this.score;
+    }
+    private void IsPlayerDied()
+    {
+        if (gameDirector.isDied || gameDirector.isGameOver)
+        {
+            this.enabled = false;
+        }
     }
 }

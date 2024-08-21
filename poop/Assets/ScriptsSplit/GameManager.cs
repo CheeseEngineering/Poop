@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -24,7 +25,7 @@ public class GameManager : MonoBehaviour
 
     private void GameOverCheck()
     {
-        if (gameDirector.remainTime <= 0 || gameDirector.currentHp <= 0)
+        if (gameDirector.remainTime <= 0 && this.isGameOver == false || gameDirector.currentHp <= 0 && gameDirector.isDied == true && this.isGameOver == false)
         {
             this.isGameOver = true;
             gameDirector.isGameOver = true;
@@ -38,7 +39,6 @@ public class GameManager : MonoBehaviour
         {
             this.isHardModeUnlocked = true;
             gameDirector.isHardModeUnlocked = true;
-            Debug.Log("하드모드 언락");
         }
     }
 }

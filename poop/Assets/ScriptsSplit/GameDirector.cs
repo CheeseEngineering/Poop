@@ -7,11 +7,17 @@ using UnityEngine.UI;
 public class GameDirector : MonoBehaviour
 {
     // PlayerController
+    public GameObject hpGaugeGo;
     public GameObject playerGo;
     public PlayerController playerController;
     public bool isLeftKeyDown;
     public bool isRightKeyDown;
     public float currentHp;
+    public float playerPosX;
+    public float playerPosY;
+    public float playerRadius;
+    public bool isDied;
+    
 
     // TimeManager
     public GameObject timerManagerGo;
@@ -35,12 +41,12 @@ public class GameDirector : MonoBehaviour
     public ArrowGenerator arrowGenerator;
     public bool isReloadCompleted;
 
+    
     void Start()
     {
         playerController = playerGo.GetComponent<PlayerController>();
         arrowGenerator = arrowGeneratorGo.GetComponent<ArrowGenerator>();
         timerManager = timerManagerGo.GetComponent<TimerManager>();
-
     }
 
     // Update is called once per frame
@@ -60,14 +66,20 @@ public class GameDirector : MonoBehaviour
     private void PlayerControllerDirecting()
     {
         this.currentHp = playerController.hp;
-        if (isLeftKeyDown)
+        this.playerPosX = playerGo.transform.position.x;
+        this.playerPosY = playerGo.transform.position.y;
+        this.playerRadius = playerController.radius;
+        this.isDied = playerController.isDied;
+        if (this.isLeftKeyDown)
         {
             playerController.moveAmount = -1;
         }
-        else if (isRightKeyDown)
+        else if (this.isRightKeyDown)
         {
             playerController.moveAmount = 1;
         }
+        hpGaugeGo.GetComponent<Image>().fillAmount = (playerController.hp * 0.01f);
+
     }
     private void TimeManagerDirecting()
     {
@@ -99,7 +111,6 @@ public class GameDirector : MonoBehaviour
 
         if (this.isHardModeUnlocked == true)
         {
-            Debug.Log("하드모드 언락 전달");
             timerManager.isHardModUnlocked = true;
             arrowGenerator.isHardModeUnlocked = true;
             this.isHardModeUnlocked = false;

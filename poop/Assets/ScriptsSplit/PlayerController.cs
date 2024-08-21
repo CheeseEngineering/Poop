@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     public float hp = 100;
     public float radius = 1f;
     public float moveAmount;
+    public bool isDamaged=false;
+    public bool isDied = false;
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +21,12 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         this.Move();
+
         this.LimitPosition();
+
+        this.IsDamaged();
+
+        this.IsDied();
     }
     private void LimitPosition()
     {
@@ -32,5 +39,25 @@ public class PlayerController : MonoBehaviour
     {
         this.transform.Translate(moveAmount, 0, 0);
         moveAmount = 0;
+    }
+
+    private void IsDamaged()
+    {
+        if (this.isDamaged == true)
+        {
+            Debug.Log($"현재 체력 : {this.hp}/{this.maxHp}");
+            this.isDamaged = false;
+        }
+    }
+
+    private void IsDied()
+    {
+        if(this.hp <= 0)
+        {
+            this.hp = 0;
+            Debug.Log("사망하였습니다.");
+            this.isDied = true;
+            this.enabled = false;
+        }
     }
 }

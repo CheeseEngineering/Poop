@@ -247,13 +247,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameDirectorGo: {fileID: 1471694237}
   gameDirector: {fileID: 0}
-  ArrowPrefab: {fileID: 5664169872360948394, guid: 29e8bc5bdd6d9a3499800330e00113f5, type: 3}
-  ArrowMaxPrefab: {fileID: 5664169872360948394, guid: 401d21c4d3a2f504eb89e268aad84200, type: 3}
+  ArrowPrefab: {fileID: 7660128980621993954, guid: 29e8bc5bdd6d9a3499800330e00113f5, type: 3}
+  ArrowMaxPrefab: {fileID: 7660128980621993954, guid: 604e30fd7d4c89b4e89393a7c096d5c1, type: 3}
   ArrowController: {fileID: 0}
+  ArrowMaxController: {fileID: 0}
   isReloadCompleted: 0
   isHardModeUnlocked: 0
   arrowDamage: 0
   arrowSpeed: 0
+  arrowPosX: 0
 --- !u!1 &333372229
 GameObject:
   m_ObjectHideFlags: 0
@@ -723,11 +725,11 @@ Transform:
   m_GameObject: {fileID: 1094480926}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1041.9009, y: -1028.575, z: 0}
+  m_LocalPosition: {x: 0, y: -3.4300537, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1972366677}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1094480929
 MonoBehaviour:
@@ -744,6 +746,8 @@ MonoBehaviour:
   hp: 100
   radius: 1
   moveAmount: 0
+  isDamaged: 0
+  isDied: 0
 --- !u!1 &1326605660
 GameObject:
   m_ObjectHideFlags: 0
@@ -867,11 +871,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b291497b5499224ea0141e0f33eb9a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hpGaugeGo: {fileID: 566598708}
   playerGo: {fileID: 1094480926}
   playerController: {fileID: 0}
   isLeftKeyDown: 0
   isRightKeyDown: 0
   currentHp: 0
+  playerPosX: 0
+  playerPosY: 0
+  playerRadius: 0
+  isDied: 0
   timerManagerGo: {fileID: 333372229}
   timerManager: {fileID: 0}
   textTimeGo: {fileID: 8309075}
@@ -1224,7 +1233,7 @@ Transform:
   m_GameObject: {fileID: 1953910479}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.0156, y: -0.0358, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3.4749, y: 1.963114, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1260,13 +1269,12 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1471694238}
   - {fileID: 2108397762}
   - {fileID: 1011174376}
   - {fileID: 853129437}
-  - {fileID: 1471694238}
   - {fileID: 115331715}
   - {fileID: 333372230}
-  - {fileID: 1094480928}
   m_Father: {fileID: 2007947197}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1972366678
@@ -1382,3 +1390,4 @@ SceneRoots:
   - {fileID: 1953910481}
   - {fileID: 1689965966}
   - {fileID: 2007947197}
+  - {fileID: 1094480928}
