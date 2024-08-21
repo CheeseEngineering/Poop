@@ -11,8 +11,18 @@ public class ArrowGenerator : MonoBehaviour
     public GameObject ArrowMaxPrefab;
     public ArrowController ArrowController; 
     
-
     public bool isReloadCompleted;
+    public bool isHardModeUnlocked;
+
+    private int minDamage = 5;
+    private int maxDamage = 10;
+    private int arrowDamageToInt;
+    public float arrowDamage;
+
+    private float minSpeed = -0.06f;
+    private float maxSpeed = -0.1f;
+    public float arrowSpeed;
+
 
     void Start()
     {
@@ -21,6 +31,10 @@ public class ArrowGenerator : MonoBehaviour
     }
     void Update()
     {
+        SelectVarietyArrows();
+
+        HardModeChange();
+
         ShootingArrow();
     }
 
@@ -28,9 +42,38 @@ public class ArrowGenerator : MonoBehaviour
     {
         if (this.isReloadCompleted == true)
         {
-            Object.Instantiate(ArrowPrefab);
-            Debug.Log("발사");
-            this.isReloadCompleted = false;
+            if (this.arrowDamage == maxDamage)
+            {
+                Object.Instantiate(ArrowMaxPrefab);
+                this.isReloadCompleted = false;
+                Debug.Log("발사");
+            }
+            else
+            {
+                Object.Instantiate(ArrowPrefab);
+                this.isReloadCompleted = false;
+                Debug.Log("발사");
+            }
+            
+        }
+    }
+    private void SelectVarietyArrows()
+    {
+        this.arrowDamageToInt=Random.Range(minDamage,maxDamage);
+        this.arrowDamage = arrowDamageToInt / 1;
+        ArrowController.arrowDamage = this.arrowDamage;
+
+        this.arrowSpeed = Random.Range(minSpeed,maxSpeed);
+        ArrowController.arrowSpeed = this.arrowSpeed;
+    }
+
+    private void HardModeChange()
+    {
+        if (this.isHardModeUnlocked == true)
+        {
+            Debug.Log("활 하드모드 언락");
+            ArrowController.arrowDamage *= 2;
+            ArrowController.arrowSpeed *= 2;
         }
     }
 }

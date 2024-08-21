@@ -8,8 +8,11 @@ public class TimerManager : MonoBehaviour
 {
     public GameObject gameDirectorGo;
     public GameDirector gameDirector;
+
     public float remainTime = 30;
     public float shootingDelay = 0;
+
+    public bool isHardModUnlocked;
     void Start()
     {
         gameDirector = gameDirectorGo.GetComponent<GameDirector>();
@@ -24,18 +27,30 @@ public class TimerManager : MonoBehaviour
 
     private void RemainTimeCheck()
     {
-        remainTime -= Time.deltaTime;
+        this.remainTime -= Time.deltaTime;
         gameDirector.remainTime = remainTime;
     }
 
     private void ShootingDelayCheck()
     {
-        shootingDelay += Time.deltaTime;
-        if(shootingDelay > 1f)
+        if (isHardModUnlocked==true)
         {
-            gameDirector.isReloadCompleted = true;
-            shootingDelay = 0;
+            Debug.Log("속사 하드모드 언락");
+            this.shootingDelay += Time.deltaTime*2;
+            if (this.shootingDelay > 1f)
+            {
+                gameDirector.isReloadCompleted = true;
+                this.shootingDelay = 0;
+            }
         }
-
+        else
+        {
+            this.shootingDelay += Time.deltaTime;
+            if (this.shootingDelay > 1f)
+            {
+                gameDirector.isReloadCompleted = true;
+                this.shootingDelay = 0;
+            }
+        }
     }
 }

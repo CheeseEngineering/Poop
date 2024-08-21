@@ -249,7 +249,11 @@ MonoBehaviour:
   gameDirector: {fileID: 0}
   ArrowPrefab: {fileID: 5664169872360948394, guid: 29e8bc5bdd6d9a3499800330e00113f5, type: 3}
   ArrowMaxPrefab: {fileID: 5664169872360948394, guid: 401d21c4d3a2f504eb89e268aad84200, type: 3}
+  ArrowController: {fileID: 0}
   isReloadCompleted: 0
+  isHardModeUnlocked: 0
+  arrowDamage: 0
+  arrowSpeed: 0
 --- !u!1 &333372229
 GameObject:
   m_ObjectHideFlags: 0
@@ -298,6 +302,7 @@ MonoBehaviour:
   gameDirector: {fileID: 0}
   remainTime: 30
   shootingDelay: 0
+  isHardModUnlocked: 0
 --- !u!1 &459773706
 GameObject:
   m_ObjectHideFlags: 0
@@ -591,6 +596,7 @@ MonoBehaviour:
   gameDirectorGo: {fileID: 1471694237}
   gameDirector: {fileID: 0}
   isGameOver: 0
+  isHardModeUnlocked: 0
 --- !u!1 &1011174375
 GameObject:
   m_ObjectHideFlags: 0
@@ -866,6 +872,8 @@ MonoBehaviour:
   isLeftKeyDown: 0
   isRightKeyDown: 0
   currentHp: 0
+  timerManagerGo: {fileID: 333372229}
+  timerManager: {fileID: 0}
   textTimeGo: {fileID: 8309075}
   textTimeMiniGo: {fileID: 1326605660}
   remainTime: 0
@@ -873,6 +881,7 @@ MonoBehaviour:
   score: 0
   textGameOver: {fileID: 459773706}
   isGameOver: 0
+  isHardModeUnlocked: 0
   arrowGeneratorGo: {fileID: 115331714}
   arrowGenerator: {fileID: 0}
   isReloadCompleted: 0

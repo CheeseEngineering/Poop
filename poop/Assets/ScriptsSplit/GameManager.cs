@@ -6,7 +6,9 @@ public class GameManager : MonoBehaviour
 {
     public GameObject gameDirectorGo;
     public GameDirector gameDirector;
+
     public bool isGameOver;
+    public bool isHardModeUnlocked;
     void Start()
     {
         gameDirector = gameDirectorGo.GetComponent<GameDirector>();
@@ -16,6 +18,8 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         GameOverCheck();
+
+        HardModCheck();
     }
 
     private void GameOverCheck()
@@ -24,7 +28,17 @@ public class GameManager : MonoBehaviour
         {
             this.isGameOver = true;
             gameDirector.isGameOver = true;
+            Debug.Log("게임 오버");
         }
 
+    }
+    private void HardModCheck()
+    {
+        if(gameDirector.remainTime <= 15 && this.isHardModeUnlocked==false)
+        {
+            this.isHardModeUnlocked = true;
+            gameDirector.isHardModeUnlocked = true;
+            Debug.Log("하드모드 언락");
+        }
     }
 }

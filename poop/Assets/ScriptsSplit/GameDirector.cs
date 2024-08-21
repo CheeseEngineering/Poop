@@ -14,9 +14,12 @@ public class GameDirector : MonoBehaviour
     public float currentHp;
 
     // TimeManager
+    public GameObject timerManagerGo;
+    public TimerManager timerManager;
     public GameObject textTimeGo;
     public GameObject textTimeMiniGo;
     public float remainTime;
+    
 
     // ScoreManager
     public GameObject textScoreGo;
@@ -25,6 +28,7 @@ public class GameDirector : MonoBehaviour
     // GameManager
     public GameObject textGameOver;
     public bool isGameOver;
+    public bool isHardModeUnlocked;
 
     // ArrowGenerator
     public GameObject arrowGeneratorGo;
@@ -33,8 +37,10 @@ public class GameDirector : MonoBehaviour
 
     void Start()
     {
-       playerController = playerGo.GetComponent<PlayerController>();
-       arrowGenerator = arrowGeneratorGo.GetComponent<ArrowGenerator>();
+        playerController = playerGo.GetComponent<PlayerController>();
+        arrowGenerator = arrowGeneratorGo.GetComponent<ArrowGenerator>();
+        timerManager = timerManagerGo.GetComponent<TimerManager>();
+
     }
 
     // Update is called once per frame
@@ -90,6 +96,15 @@ public class GameDirector : MonoBehaviour
         {
             textGameOver.GetComponent<Text>().text = $"Game Over!!";
         }
+
+        if (this.isHardModeUnlocked == true)
+        {
+            Debug.Log("하드모드 언락 전달");
+            timerManager.isHardModUnlocked = true;
+            arrowGenerator.isHardModeUnlocked = true;
+            this.isHardModeUnlocked = false;
+        }
+
     }
 
     private void ArrowGeneratorDirecting()

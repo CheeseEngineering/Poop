@@ -19,6 +19,6 @@ public class ScoreManager : MonoBehaviour
     void Update()
     {
        score += Time.deltaTime / 0.001f * 0.01f;
-        gameDirector.score = score;
+       gameDirector.score = score;
     }
 }

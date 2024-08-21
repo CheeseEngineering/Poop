@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class ArrowController : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public float arrowDamage;
+    public float arrowSpeed;    
     void Start()
     {
         
     }
-
-    // Update is called once per frame
     void Update()
     {
         
