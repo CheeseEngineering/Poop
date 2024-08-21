@@ -9,7 +9,8 @@ public class ArrowController : MonoBehaviour
     public GameObject playerGo;
     public PlayerController playerController;
     public GameDirector gameDirector;
-    
+
+    private float selfScore = 10;
     public float arrowDamage;
     public float arrowSpeed;
     public float arrowPosX;
@@ -60,8 +61,10 @@ public class ArrowController : MonoBehaviour
     {
         if (gameDirector.isDied || gameDirector.isGameOver)
         {
+            gameDirector.score += this.selfScore;
+            Debug.Log($"화살 수거 점수 : {this.selfScore}");
+            Object.Destroy(selfGo);
             this.enabled = false;
         }
     }
-
 }
