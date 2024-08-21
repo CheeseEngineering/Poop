@@ -245,6 +245,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd594fc9e593f09448978623ce1b5767, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameDirectorGo: {fileID: 1471694237}
+  gameDirector: {fileID: 0}
+  ArrowPrefab: {fileID: 5664169872360948394, guid: 29e8bc5bdd6d9a3499800330e00113f5, type: 3}
+  ArrowMaxPrefab: {fileID: 5664169872360948394, guid: 401d21c4d3a2f504eb89e268aad84200, type: 3}
+  isReloadCompleted: 0
 --- !u!1 &333372229
 GameObject:
   m_ObjectHideFlags: 0
@@ -292,6 +297,7 @@ MonoBehaviour:
   gameDirectorGo: {fileID: 1471694237}
   gameDirector: {fileID: 0}
   remainTime: 30
+  shootingDelay: 0
 --- !u!1 &459773706
 GameObject:
   m_ObjectHideFlags: 0
@@ -582,8 +588,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3620d5194a18f324e945f67214fa32ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameDirectorGo: {fileID: 0}
+  gameDirectorGo: {fileID: 1471694237}
   gameDirector: {fileID: 0}
+  isGameOver: 0
 --- !u!1 &1011174375
 GameObject:
   m_ObjectHideFlags: 0
@@ -854,16 +861,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b291497b5499224ea0141e0f33eb9a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1094480926}
+  playerGo: {fileID: 1094480926}
   playerController: {fileID: 0}
   isLeftKeyDown: 0
   isRightKeyDown: 0
+  currentHp: 0
   textTimeGo: {fileID: 8309075}
   textTimeMiniGo: {fileID: 1326605660}
   remainTime: 0
   textScoreGo: {fileID: 1822989907}
   score: 0
-  textGameOver: {fileID: 566598708}
+  textGameOver: {fileID: 459773706}
+  isGameOver: 0
+  arrowGeneratorGo: {fileID: 115331714}
+  arrowGenerator: {fileID: 0}
+  isReloadCompleted: 0
 --- !u!1 &1689965962
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,10 +7,11 @@ using UnityEngine.UI;
 public class GameDirector : MonoBehaviour
 {
     // PlayerController
-    public GameObject player;
+    public GameObject playerGo;
     public PlayerController playerController;
     public bool isLeftKeyDown;
     public bool isRightKeyDown;
+    public float currentHp;
 
     // TimeManager
     public GameObject textTimeGo;
@@ -23,10 +24,17 @@ public class GameDirector : MonoBehaviour
 
     // GameManager
     public GameObject textGameOver;
+    public bool isGameOver;
+
+    // ArrowGenerator
+    public GameObject arrowGeneratorGo;
+    public ArrowGenerator arrowGenerator;
+    public bool isReloadCompleted;
 
     void Start()
     {
-       playerController = player.GetComponent<PlayerController>();
+       playerController = playerGo.GetComponent<PlayerController>();
+       arrowGenerator = arrowGeneratorGo.GetComponent<ArrowGenerator>();
     }
 
     // Update is called once per frame
@@ -39,10 +47,13 @@ public class GameDirector : MonoBehaviour
 
         ScoreManagerDirecting();
 
+        GameManagerDirecting();
 
+        ArrowGeneratorDirecting();
     }
     private void PlayerControllerDirecting()
     {
+        this.currentHp = playerController.hp;
         if (isLeftKeyDown)
         {
             playerController.moveAmount = -1;
@@ -75,6 +86,18 @@ public class GameDirector : MonoBehaviour
 
     private void GameManagerDirecting()
     {
+        if (isGameOver==true)
+        {
+            textGameOver.GetComponent<Text>().text = $"Game Over!!";
+        }
+    }
 
+    private void ArrowGeneratorDirecting()
+    {
+        if (this.isReloadCompleted == true)
+        {
+            arrowGenerator.isReloadCompleted = true;
+            this.isReloadCompleted = false;
+        }
     }
 }
