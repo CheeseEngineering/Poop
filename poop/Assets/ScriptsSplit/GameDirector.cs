@@ -6,6 +6,14 @@ using UnityEngine.UI;
 
 public class GameDirector : MonoBehaviour
 {
+    //ButtonController
+    public GameObject LeftButtonGo;
+    public GameObject RightButtonGo;
+    public ButtonController leftButtonController;
+    public ButtonController rightButtonController;
+    public bool leftButtononClicked;
+    public bool rightButtononClicked;
+
     // PlayerController
     public GameObject hpGaugeGo;
     public GameObject playerGo;
@@ -48,11 +56,8 @@ public class GameDirector : MonoBehaviour
         arrowGenerator = arrowGeneratorGo.GetComponent<ArrowGenerator>();
         timerManager = timerManagerGo.GetComponent<TimerManager>();
     }
-
-    // Update is called once per frame
     void Update()
     {
-
         PlayerControllerDirecting();
 
         TimeManagerDirecting();
@@ -70,13 +75,15 @@ public class GameDirector : MonoBehaviour
         this.playerPosY = playerGo.transform.position.y;
         this.playerRadius = playerController.radius;
         this.isDied = playerController.isDied;
-        if (this.isLeftKeyDown)
+        if (this.isLeftKeyDown || this.leftButtononClicked)
         {
             playerController.moveAmount = -1;
+            this.leftButtononClicked = false;
         }
-        else if (this.isRightKeyDown)
+        else if (this.isRightKeyDown || this.rightButtononClicked)
         {
             playerController.moveAmount = 1;
+            this.rightButtononClicked = false;
         }
         hpGaugeGo.GetComponent<Image>().fillAmount = (playerController.hp * 0.01f);
 
@@ -125,5 +132,17 @@ public class GameDirector : MonoBehaviour
             arrowGenerator.isReloadCompleted = true;
             this.isReloadCompleted = false;
         }
+    }
+
+    public void LeftButtonClick()
+    {
+        Debug.Log("좌버튼 눌림");
+        this.leftButtononClicked = true;
+    }
+
+    public void RightButtonClick()
+    {
+        Debug.Log("우버튼 눌림");
+        this.rightButtononClicked = true;
     }
 }

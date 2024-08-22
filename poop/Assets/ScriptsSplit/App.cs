@@ -10,5 +10,9 @@ public class App : MonoBehaviour
     {
         gameLauncher = gameLauncherGo.GetComponent<GameLauncher>();
     }
+    private void Update()
+    {
+        
+    }
 
 }

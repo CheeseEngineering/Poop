@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class GameLauncher : MonoBehaviour
 {
-    public GameObject inputManagerGo;
     private InputManager InputManager;
     void Start()
     {

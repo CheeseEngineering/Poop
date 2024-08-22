@@ -73,7 +73,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: c1d72e59b8269b94c8715c0165546b2a, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
@@ -98,6 +98,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selfGo: {fileID: 7660128980621993954}
-  arrowDamage: 0
-  arrowSpeed: 0
-  arrowPosX: 0
+  gameDirectorGo: {fileID: 0}
+  playerGo: {fileID: 0}
+  playerController: {fileID: 0}
+  gameDirector: {fileID: 0}
+  arrowDamage: 9
+  arrowSpeed: -0.060937
+  arrowPosX: -1.3618498
+  radius: 1
